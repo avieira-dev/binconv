@@ -18,7 +18,7 @@
 
 - [Overview](#overview)
 - [Features](#features-v1)
-- [Build](#build)
+- [Build and Execute](#build-and-execute)
 - [Planned Features](#planned-features)
 - [Project Structure](#project-structure)
 - [Philosophy](#philosophy)
@@ -42,7 +42,7 @@
 
 ---
 
-## Build
+## Build and Execute
 
 ```bash
 mkdir build
