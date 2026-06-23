@@ -14,6 +14,12 @@
 
 ---
 
+> [!WARNING]  
+> This project is currently under active development. Features may be incomplete, unstable, or subject to change, and bugs may be present.
+
+
+---
+
 ## Table of Contents
 
 - [Overview](#overview)
