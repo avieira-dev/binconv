@@ -1,3 +1,11 @@
+/*
+ * binconv
+ * Numeric Converter Implementation
+ *
+ * Copyright (c) 2026 Alexandre Vieira
+ * Licensed under the MIT License.
+ */
+
 #include "binconv/menu.h"
 
 #include <stdio.h>
@@ -11,7 +19,7 @@
  * This function is responsible only for outputting the visual
  * representation of the menu. It does not handle any input logic.
  */
-void print_menu() {
+void binconv_print_menu() {
 
     printf("\033[1;34m");
 
@@ -21,14 +29,15 @@ void print_menu() {
             "| |_) | | | | | (_| (_) | | | \\ V / \n"
             "|_.__/|_|_| |_|\\___\\___/|_| |_|\\_/\n");
 
-    printf("\033[0m\nNUMERIC CONVERTER\n");
-    printf("------------------------------------------\n\n");
+    printf("\033[0m\n");
+    printf("\033[1;37mNNUMERIC CONVERTER\033[0m\n");
+    printf("----------------------------------------------------------------\n\n");
 
     printf("\033[1;32m[1]\033[0m Decimal → Binary\n");
     printf("\033[1;32m[2]\033[0m Binary → Decimal\n\n");
     printf("\033[1;32m[0]\033[0m Exit\n\n");
 
-    printf("------------------------------------------\n\n");
+    printf("----------------------------------------------------------------\n\n");
 }
 
 /**
@@ -40,9 +49,9 @@ void print_menu() {
  *
  * @param[out] out Pointer where the validated option will be stored.
  */
-void read_menu_option(long *out) {
+void binconv_read_menu_option(long *out) {
 
-    char buf[65];
+    char buffer[65];
     char *end;
     long value;
     bool capture = true;
@@ -50,15 +59,15 @@ void read_menu_option(long *out) {
     while (capture) {
         printf("Select an option (0 - 2): ");
 
-        if (fgets(buf, sizeof(buf), stdin) == NULL) {
+        if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
             printf("\033[0;31m[Error]\033[0m Failed to read input.\n");
             continue;
         }
 
         errno = 0;
-        value = strtol(buf, &end, 10);
+        value = strtol(buffer, &end, 10);
 
-        if (end == buf || (*end != '\n' && *end != '\0') || errno == ERANGE) {
+        if (end == buffer || (*end != '\n' && *end != '\0') || errno == ERANGE) {
             printf("\033[0;31m[Error]\033[0m Invalid input, trailing characters, or out of range.\n");
             continue;
         }
