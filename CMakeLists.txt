@@ -9,9 +9,13 @@ set(CMAKE_C_EXTENSIONS OFF)
 set(BINCONV_SOURCES
     src/main.c
     src/menu.c
+    src/convert.c
+    src/input.c
 )
 
 add_executable(binconv ${BINCONV_SOURCES})
+
+target_link_libraries(binconv PRIVATE m)
 
 target_include_directories(binconv PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
