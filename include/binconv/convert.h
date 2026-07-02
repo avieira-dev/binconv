@@ -19,6 +19,6 @@
  * @param[in] size The total size of the output buffer.
  * @return int 0 on success, -1 on failure.
  */
-int binconv_decimal_to_binary(char *out, int value, size_t size);
+int binconv_decimal_to_binary(char *out, long value, size_t size);
 
 #endif

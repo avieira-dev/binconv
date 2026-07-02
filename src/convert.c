@@ -35,7 +35,7 @@ static int find_msb_position(int value) {
  * Validates the input buffers and sizes, handles the base case for zero,
  * and dynamically shifts bits to write '1' or '0' characters into the buffer.
  */
-int binconv_decimal_to_binary(char *out, int value, size_t size) {
+int binconv_decimal_to_binary(char *out, long value, size_t size) {
 
     if (!out || value < 0 || size == 0) {
         return -1;

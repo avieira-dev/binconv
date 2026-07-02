@@ -24,7 +24,7 @@ int main(void) {
     long option;
     bool running = true;
     long value = 0;
-    char buffer[32];
+    char buffer[65];
 
     while (running) {
         binconv_print_menu();
