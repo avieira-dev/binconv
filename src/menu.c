@@ -30,7 +30,7 @@ void binconv_print_menu() {
             "|_.__/|_|_| |_|\\___\\___/|_| |_|\\_/\n");
 
     printf("\033[0m\n");
-    printf("\033[1;37mNNUMERIC CONVERTER\033[0m\n");
+    printf("\033[1;37mNUMERIC CONVERTER\033[0m\n");
     printf("----------------------------------------------------------------\n\n");
 
     printf("\033[1;32m[1]\033[0m Decimal → Binary\n");
