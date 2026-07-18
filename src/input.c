@@ -20,7 +20,6 @@
  * explicitly ensures no trailing garbage characters or out-of-range values exist.
  */
 void binconv_read_decimal(long *out) {
-
     char buffer[65];
     char *end;
     long value;
@@ -59,7 +58,6 @@ void binconv_read_decimal(long *out) {
  * the user presses Enter.
  */
 void binconv_wait_for_enter(void) {
-
     int ch;
 
     printf("\nPress Enter to continue...");

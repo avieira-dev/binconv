@@ -20,7 +20,6 @@
  * representation of the menu. It does not handle any input logic.
  */
 void binconv_print_menu() {
-
     printf("\033[1;34m");
 
     printf(" _     _                            \n"
@@ -50,7 +49,6 @@ void binconv_print_menu() {
  * @param[out] out Pointer where the validated option will be stored.
  */
 void binconv_read_menu_option(long *out) {
-
     char buffer[65];
     char *end;
     long value;

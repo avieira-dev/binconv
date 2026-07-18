@@ -20,7 +20,6 @@
  * to the menu module and handling the selected option.
  */
 int main(void) {
-
     long option;
     bool running = true;
     long value = 0;

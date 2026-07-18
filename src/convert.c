@@ -14,7 +14,6 @@
  * Returns -1 if the value is 0 or negative.
  */
 static int find_msb_position(int value) {
-
     if (value <= 0) {
         return -1;
     }
@@ -36,7 +35,6 @@ static int find_msb_position(int value) {
  * and dynamically shifts bits to write '1' or '0' characters into the buffer.
  */
 int binconv_decimal_to_binary(char *out, long value, size_t size) {
-
     if (!out || value < 0 || size == 0) {
         return -1;
     }
