@@ -14,28 +14,24 @@
 
 ---
 
+## Overview
+
+**binconv** is a CLI utility designed to convert numbers between different numeral systems, starting with decimal and binary.
+
 > [!WARNING]  
 > This project is currently under active development. Features may be incomplete, unstable, or subject to change, and bugs may be present.
-
 
 ---
 
 ## Table of Contents
 
-- [Overview](#overview)
 - [Features](#features-v1)
 - [Build and Execute](#build-and-execute)
 - [Planned Features](#planned-features)
 - [Project Structure](#project-structure)
 - [Philosophy](#philosophy)
-- [Developer](#developer)
+- [Author](#author)
 - [License](#license)
-
----
-
-## Overview
-
-**binconv** is a CLI utility designed to convert numbers between different numeral systems, starting with decimal and binary.
 
 ---
 
@@ -94,7 +90,7 @@ This project prioritizes:
 
 ---
 
-## Developer
+## Author
 
 **Alexandre Vieira**  
 GitHub: [@avieira-dev](https://github.com/avieira-dev)
