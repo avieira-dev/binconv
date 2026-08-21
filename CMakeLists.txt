@@ -11,6 +11,8 @@ set(BINCONV_SOURCES
     src/menu.c
     src/convert.c
     src/input.c
+    src/signal.c
+    src/application.c
 )
 
 add_executable(binconv ${BINCONV_SOURCES})

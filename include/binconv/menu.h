@@ -13,12 +13,12 @@
  * @brief Displays the main application menu in the terminal.
  *
  * Responsible only for rendering the textual user interface,
- * showing available conversion options and exit option.
+ * showing available conversion options and the exit option.
  */
-void binconv_print_menu();
+void binconv_print_menu(void);
 
 /**
- * @brief Reads and validates the user menu selection.
+ * @brief Reads and validates the user's menu selection.
  *
  * Waits for user input from stdin, performs safe parsing,
  * and ensures the value is within the allowed range.
