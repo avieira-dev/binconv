@@ -6,13 +6,14 @@
  * Licensed under the MIT License.
  */
 
-#include "binconv/menu.h"
-#include "binconv/signal.h"
-
 #include <errno.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "binconv/colors.h"
+#include "binconv/menu.h"
+#include "binconv/signal.h"
 
 /**
  * @brief Renders the CLI menu interface.
@@ -21,22 +22,23 @@
  * representation of the menu. It does not handle any input logic.
  */
 void binconv_print_menu(void) {
-    printf("\033[1;34m");
+    printf(COLOR_BOLD_BLUE "\n");
 
-    printf(" _     _                            \n"
-           "| |__ (_)__   ___ ___  _ ____   __\n"
-           "| '_ \\| | '_ \\ / __/ _ \\| '_ \\ \\ / /\n"
-           "| |_) | | | | | (_| (_) | | | \\ V / \n"
-           "|_.__/|_|_| |_|\\___\\___/|_| |_|\\_/\n");
+    printf("1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\n"
+           "0                                     1\n"
+           "1              BINCONV                0\n"
+           "0                                     1\n"
+           "1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\n"
+    );
 
-    printf("\033[0m\n");
-    printf("\033[1;37mNUMERIC CONVERTER\033[0m\n");
-    printf("----------------------------------------------------------------\n\n");
+    printf(COLOR_RESET);
 
-    printf("\033[1;32m[1]\033[0m Decimal → Binary\n");
-    printf("\033[1;32m[2]\033[0m Binary → Decimal\n\n");
+    printf("\n" COLOR_BOLD_WHITE "NUMERIC CONVERTER" COLOR_RESET "\n\n");
 
-    printf("\033[1;32m[0]\033[0m Exit\n\n");
+    printf(COLOR_CYAN "[1] " COLOR_RESET "Decimal → Binary\n");
+    printf(COLOR_CYAN "[2] " COLOR_RESET "Binary → Decimal\n\n");
+
+    printf(COLOR_CYAN "[0] " COLOR_RESET "Exit\n\n");
 
     printf("----------------------------------------------------------------\n\n");
 }
@@ -52,11 +54,11 @@ void binconv_print_menu(void) {
  */
 void binconv_read_menu_option(long *out) {
     char buffer[65];
-    char *end;
-    long value;
-    bool capture = true;
+    char *end_pointer;
+    long menu_option;
+    bool reading_input = true;
 
-    while (capture) {
+    while (reading_input) {
         printf("Select an option (0 - 2): ");
 
         if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
@@ -64,23 +66,23 @@ void binconv_read_menu_option(long *out) {
                 return;
             }
 
-            printf("\033[0;31m[Error]\033[0m Failed to read input.\n");
+            printf(COLOR_RED "[ERROR] " COLOR_RESET "Failed to read input.\n");
             continue;
         }       
 
         errno = 0;
-        value = strtol(buffer, &end, 10);
+        menu_option = strtol(buffer, &end_pointer, 10);
 
-        if (end == buffer || (*end != '\n' && *end != '\0') || errno == ERANGE) {
-            printf("\033[0;31m[Error]\033[0m Invalid input, trailing characters, or out of range.\n");
+        if (end_pointer == buffer || (*end_pointer != '\n' && *end_pointer != '\0') || errno == ERANGE) {
+            printf(COLOR_RED "[ERROR] " COLOR_RESET "Invalid input, trailing characters, or out of range.\n");
             continue;
         }
 
-        if (value >= 0 && value <= 2) {
-            *out = value;
-            capture = false;
+        if (menu_option >= 0 && menu_option <= 2) {
+            *out = menu_option;
+            reading_input = false;
         } else {
-            printf("\033[0;31m[Error]\033[0m Number must be between 0 and 2.\n");
+            printf(COLOR_RED "[ERROR] " COLOR_RESET "Number must be between 0 and 2.\n");
         }
     }
 }

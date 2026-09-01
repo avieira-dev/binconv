@@ -6,15 +6,25 @@
  * Licensed under the MIT License.
  */
 
-#include "binconv/application.h"
-
 #include <stdio.h>
+
+#include "binconv/application.h"
+#include "binconv/colors.h"
 
 /**
  * @brief Displays the exit message.
  *
  * Displays the application's termination message before exiting.
  */
-void binconv_exit(void) {
-    printf("\n\033[0;34mBye, see you later!\033[0m\n");
+void binconv_print_exit(void) {
+    printf("\n" COLOR_DIM "Bye, see you later!" COLOR_RESET "\n\n");
+}
+
+/**
+ * @brief Displays the cancellation (interruption) message.
+ * 
+ * Displays the application's cancellation message before exiting.
+ */
+void binconv_print_cancel(void) {
+    printf("\n\n" COLOR_BOLD_YELLOW "[INFO] " COLOR_RESET "Operation cancelled. " COLOR_DIM "Bye, see you later!" COLOR_RESET "\n\n");
 }

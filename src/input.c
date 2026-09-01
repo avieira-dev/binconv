@@ -6,14 +6,15 @@
  * Licensed under the MIT License.
  */
 
-#include "binconv/signal.h"
-#include "binconv/input.h"
-
 #include <errno.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include "binconv/colors.h"
+#include "binconv/input.h"
+#include "binconv/signal.h"
 
 /**
  * @brief Reads and validates a non-negative decimal number from the user.
@@ -25,11 +26,11 @@
  */
 void binconv_read_decimal(long *out) {
     char buffer[65];
-    char *end;
-    long value;
-    bool capture = true;
+    char *end_pointer;
+    long decimal_value;
+    bool reading_input = true;
 
-    while (capture) {
+    while (reading_input) {
         printf("Enter a number greater than or equal to 0: ");
 
         if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
@@ -37,23 +38,23 @@ void binconv_read_decimal(long *out) {
                 return;
             }
 
-            printf("\033[0;31m[Error]\033[0m Failed to read input.\n");
+            printf(COLOR_RED "[Error] " COLOR_RESET "Failed to read input.\n");
             continue;
         }
 
         errno = 0;
-        value = strtol(buffer, &end, 10);
+        decimal_value = strtol(buffer, &end_pointer, 10);
 
-        if (end == buffer || (*end != '\n' && *end != '\0') || errno == ERANGE) {
-            printf("\033[0;31m[Error]\033[0m Invalid input, trailing characters, or out of range.\n");
+        if (end_pointer == buffer || (*end_pointer != '\n' && *end_pointer != '\0') || errno == ERANGE) {
+            printf(COLOR_RED "[Error] " COLOR_RESET "Invalid input, trailing characters, or out of range.\n");
             continue;
         }
 
-        if (value >= 0) {
-            *out = value;
-            capture = false;
+        if (decimal_value >= 0) {
+            *out = decimal_value;
+            reading_input = false;
         } else {
-            printf("\033[0;31m[Error]\033[0m The number must be greater than or equal to 0.\n");
+            printf(COLOR_RED "[Error] " COLOR_RESET "The number must be greater than or equal to 0.\n");
         }
     }
 }
@@ -70,9 +71,9 @@ void binconv_read_decimal(long *out) {
 void binconv_read_binary(char *out, size_t *length) {
     char buffer[65];
     size_t binary_length;
-    bool capture = true;
+    bool reading_input = true;
 
-    while (capture) {
+    while (reading_input) {
         printf("Enter a binary number (up to 64 bits): ");
 
         if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
@@ -80,7 +81,7 @@ void binconv_read_binary(char *out, size_t *length) {
                 return;
             }
 
-            printf("\033[0;31m[Error]\033[0m Failed to read input.\n");
+            printf(COLOR_RED "[Error] " COLOR_RESET "Failed to read input.\n");
             continue;
         }
 
@@ -101,14 +102,14 @@ void binconv_read_binary(char *out, size_t *length) {
         }
 
         if (!valid) {
-            printf("\033[0;31m[Error]\033[0m Invalid input, only '0' and '1' are allowed.\n");
+            printf(COLOR_RED "[Error] " COLOR_RESET "Invalid input, only '0' and '1' are allowed.\n");
             continue;
         }
 
         strcpy(out, buffer);
 
         *length = binary_length;
-        capture = false;
+        reading_input = false;
     }
 }
 

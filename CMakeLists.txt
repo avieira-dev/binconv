@@ -6,13 +6,8 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
-set(BINCONV_SOURCES
-    src/main.c
-    src/menu.c
-    src/convert.c
-    src/input.c
-    src/signal.c
-    src/application.c
+file(GLOB BINCONV_SOURCES CONFIGURE_DEPENDS
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.c
 )
 
 add_executable(binconv ${BINCONV_SOURCES})
@@ -28,3 +23,5 @@ target_compile_options(binconv PRIVATE
     -Wextra
     -Wpedantic
 )
+
+install(TARGETS binconv DESTINATION bin)

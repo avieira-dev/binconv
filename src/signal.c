@@ -6,9 +6,9 @@
  * Licensed under the MIT License.
  */
 
-#include "binconv/signal.h"
-
 #include <signal.h>
+
+#include "binconv/signal.h"
 
 static volatile sig_atomic_t interrupted = 0;
 

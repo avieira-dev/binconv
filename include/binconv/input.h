@@ -1,6 +1,6 @@
 /*
  * binconv
- * Numeric Converter Public API
+ * Input Public API
  *
  * Copyright (c) 2026 Alexandre Vieira
  * Licensed under the MIT License.

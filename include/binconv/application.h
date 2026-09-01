@@ -14,6 +14,13 @@
  *
  * Displays the application's termination message before exiting.
  */
-void binconv_exit(void);
+void binconv_print_exit(void);
+
+/**
+ * @brief Displays the cancellation (interruption) message.
+ * 
+ * Displays the application's cancellation message before exiting.
+ */
+void binconv_print_cancel(void);
 
 #endif
