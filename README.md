@@ -18,8 +18,8 @@
 
 **binconv** is a lightweight CLI utility designed to convert numbers between different numeral systems, currently supporting decimal and binary conversions.
 
-> [!WARNING]  
-> This project is currently under active development. Features may be incomplete, unstable, or subject to change, and bugs may be present.
+> [!IMPORTANT]  
+> **binconv v2.0.0** is now stable.
 
 ---
 
