@@ -1,3 +1,11 @@
+/*
+ * binconv
+ * Banner Implementation
+ *
+ * Copyright (c) 2026 Alexandre Vieira
+ * Licensed under the MIT License.
+ */
+
 #include <stdio.h>
 
 #include "binconv/banner.h"
@@ -19,4 +27,9 @@ void binconv_print_banner(void) {
     );
 
     printf(COLOR_RESET "\n");
+
+    printf(COLOR_BG_GREEN COLOR_BOLD_WHITE " v2.0.0 " COLOR_RESET);
+    printf(COLOR_DIM " Number system conversions" COLOR_RESET);
+
+    printf("\n\n");
 }
