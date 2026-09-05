@@ -22,9 +22,9 @@ void binconv_print_exit(void) {
 
 /**
  * @brief Displays the cancellation (interruption) message.
- * 
+ *
  * Displays the application's cancellation message before exiting.
  */
 void binconv_print_cancel(void) {
-    printf("\n\n" COLOR_BOLD_YELLOW "[INFO] " COLOR_RESET "Operation cancelled. " COLOR_DIM "Bye, see you later!" COLOR_RESET "\n\n");
+    printf("\n\n" COLOR_BOLD_YELLOW "ℹ " COLOR_RESET "Operation cancelled. " COLOR_DIM "Bye, see you later!" COLOR_RESET "\n\n");
 }

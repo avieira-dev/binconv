@@ -6,7 +6,7 @@
  * Licensed under the MIT License.
  */
 
-#ifndef BINCONV_HELP_H 
+#ifndef BINCONV_HELP_H
 #define BINCONV_HELP_H
 
 /**
