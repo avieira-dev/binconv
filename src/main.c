@@ -1,12 +1,13 @@
 /*
  * binconv
- * Numeric Converter Implementation
+ * Main Implementation
  *
  * Copyright (c) 2026 Alexandre Vieira
  * Licensed under the MIT License.
  */
 
 #include <stdbool.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -27,10 +28,13 @@
  * @return int 0 on successful execution.
  */
 int main(int argc, char *argv[]) {
+    const char *options[] = {"Decimal → Binary", "Binary → Decimal", "Exit"};
+    size_t n = sizeof(options) / sizeof(options[0]);
+
     if (argc == 1) {
         binconv_setup_signals();
 
-        long menu_option;
+        size_t menu_option;
         bool running = true;
         long decimal_value = 0;
         char binary_buffer[65];
@@ -41,7 +45,7 @@ int main(int argc, char *argv[]) {
         while (running) {
             binconv_print_menu();
 
-            binconv_read_menu_option(&menu_option);
+            binconv_read_menu_option(&menu_option, options, n);
 
             if (binconv_was_interrupted()) {
                 binconv_print_cancel();
@@ -50,11 +54,6 @@ int main(int argc, char *argv[]) {
 
             switch (menu_option) {
                 case 0:
-                    binconv_print_exit();
-                    running = false;
-                    break;
-                
-                case 1:
                     binconv_read_decimal(&decimal_value);
 
                     if (binconv_was_interrupted()) {
@@ -73,7 +72,7 @@ int main(int argc, char *argv[]) {
                     binconv_wait_for_enter();
                     break;
 
-                case 2:
+                case 1:
                     binconv_read_binary(binary_value, &binary_length);
 
                     if (binconv_was_interrupted()) {
@@ -92,6 +91,11 @@ int main(int argc, char *argv[]) {
                     binconv_wait_for_enter();
                     break;
 
+                case 2:
+                    binconv_print_exit();
+                    running = false;
+                    break;
+
                 default:
                     break;
             }
@@ -103,15 +107,15 @@ int main(int argc, char *argv[]) {
 
         return 0;
     } else if (argc == 2) {
-        if (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0 ) {
+        if (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) {
             binconv_print_help();
             return 0;
         } else {
-            printf(COLOR_BOLD_RED "[ERROR]" COLOR_RESET "Invalid command. Use" COLOR_BOLD_WHITE "'binconv -h' or 'binconv --help." COLOR_RESET "\n");
+            printf(COLOR_BOLD_RED "[ERROR] " COLOR_RESET "Invalid command. Use " COLOR_BOLD_WHITE "'binconv -h'" COLOR_RESET " or " COLOR_BOLD_WHITE "'binconv --help'" COLOR_RESET ".\n");
             return 0;
         }
     } else {
-        printf(COLOR_BOLD_RED "[ERROR]" COLOR_RESET "Invalid number of arguments. Use" COLOR_BOLD_WHITE "'binconv -h' or 'binconv --help." COLOR_RESET "\n");
+        printf(COLOR_BOLD_RED "[ERROR] " COLOR_RESET "Invalid number of arguments. Use " COLOR_BOLD_WHITE "'binconv -h'" COLOR_RESET " or " COLOR_BOLD_WHITE "'binconv --help'" COLOR_RESET ".\n");
         return 0;
-    }   
+    }
 }

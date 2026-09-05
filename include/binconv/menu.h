@@ -18,13 +18,16 @@
 void binconv_print_menu(void);
 
 /**
- * @brief Reads and validates the user's menu selection.
+ * @brief Displays and reads the interactive menu selection.
  *
- * Waits for user input from stdin, performs safe parsing,
- * and ensures the value is within the allowed range.
+ * Enables raw terminal input, allows the user to navigate through
+ * the available options using the arrow keys, and stores the
+ * selected option when Enter is pressed.
  *
- * @param[out] out Pointer where the validated option will be stored.
+ * @param[out] out Pointer where the selected option index will be stored.
+ * @param[in] options Array containing the available option labels.
+ * @param[in] n Number of available options.
  */
-void binconv_read_menu_option(long *out);
+void binconv_read_menu_option(size_t *out, const char **options, size_t n);
 
 #endif
