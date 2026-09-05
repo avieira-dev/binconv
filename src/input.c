@@ -1,6 +1,6 @@
 /*
  * binconv
- * Numeric Converter Implementation
+ * Input Implementation
  *
  * Copyright (c) 2026 Alexandre Vieira
  * Licensed under the MIT License.
@@ -11,10 +11,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #include "binconv/colors.h"
 #include "binconv/input.h"
 #include "binconv/signal.h"
+
+#define ESC '\x1b'
 
 /**
  * @brief Reads and validates a non-negative decimal number from the user.
@@ -31,7 +34,7 @@ void binconv_read_decimal(long *out) {
     bool reading_input = true;
 
     while (reading_input) {
-        printf("Enter a number greater than or equal to 0: ");
+        printf("\nEnter a number greater than or equal to 0: ");
 
         if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
             if (binconv_was_interrupted()) {
@@ -74,7 +77,7 @@ void binconv_read_binary(char *out, size_t *length) {
     bool reading_input = true;
 
     while (reading_input) {
-        printf("Enter a binary number (up to 64 bits): ");
+        printf("\nEnter a binary number (up to 64 bits): ");
 
         if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
             if (binconv_was_interrupted()) {
@@ -128,4 +131,42 @@ void binconv_wait_for_enter(void) {
     while ((character = getchar()) != '\n' && character != EOF) {
         ;
     }
+}
+
+/**
+ * @brief Reads a single key from standard input.
+ *
+ * Reads individual keystrokes and translates supported terminal
+ * escape sequences for the up and down arrow keys.
+ *
+ * @return int The key code read from input, or -1 on failure.
+ */
+int binconv_read_key(void) {
+    char c;
+    if (read(STDIN_FILENO, &c, 1) != 1) {
+        return -1;
+    }
+
+    if (c == ESC) {
+        char buf[2];
+        if (read(STDIN_FILENO, &buf[0], 1) != 1) {
+            return -1;
+        }
+
+        if (read(STDIN_FILENO, &buf[1], 1) != 1) {
+            return -1;
+        }
+
+        if (buf[0] == '[') {
+            switch (buf[1]) {
+                case 'A':
+                    return 1000;
+                case 'B':
+                    return 1001;
+            }
+        }
+        return -1;
+    }
+
+    return (unsigned char)c;
 }

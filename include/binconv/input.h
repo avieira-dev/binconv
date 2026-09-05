@@ -41,4 +41,15 @@ void binconv_read_binary(char *out, size_t *length);
  */
 void binconv_wait_for_enter(void);
 
+/**
+ * @brief Reads a single key from standard input.
+ *
+ * Reads individual keystrokes while the terminal is in raw mode
+ * and translates supported escape sequences for arrow keys into
+ * application-specific key codes.
+ *
+ * @return int The key code read from input, or -1 on failure.
+ */
+int binconv_read_key(void);
+
 #endif
