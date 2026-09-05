@@ -2,9 +2,13 @@
     <h1>binconv</h1>
     <p>A lightweight command-line tool for number system conversions.</p>
     <p>
-        <img src="https://img.shields.io/badge/status-in%20development-f39c12?style=flat-square"/>
+        <img src="https://img.shields.io/badge/version-v2.0.0-4c1?style=flat-square"/>
+        <img src="https://img.shields.io/badge/status-stable-2ea44f?style=flat-square"/>
+        <img src="https://img.shields.io/badge/platform-Linux-FCC624?style=flat-square&logo=linux&logoColor=black"/>
+        <img src="https://img.shields.io/badge/maintenance-active-1f6feb?style=flat-square"/>
         <img src="https://img.shields.io/badge/language-C-A8B9CC?style=flat-square&logo=c&logoColor=white"/>
         <img src="https://img.shields.io/badge/build-CMake-8a63d2?style=flat-square&logo=cmake&logoColor=white"/>
+        <img src="https://img.shields.io/badge/license-MIT-6e7781?style=flat-square"/>
     </p>
 </div>
 
@@ -21,12 +25,26 @@
 
 ## Table of Contents
 
+- [Showcase](#showcase)
 - [Roadmap](#roadmap)
 - [Build and Execute](#build-and-execute)
 - [Project Structure](#project-structure)
 - [Philosophy](#philosophy)
 - [Author](#author)
 - [License](#license)
+
+---
+
+## Showcase
+
+<p align="center">
+    <em>Interactive menu option selection</em><br>
+    <img src="./assets/screenshots/screenshot-01.png" alt="Interactive menu option selection" width="500"/><br><br>
+    <em>Decimal to binary conversion</em><br>
+    <img src="./assets/screenshots/screenshot-02.png" alt="Decimal to binary conversion" width="500"/><br><br>
+    <em>Help and available commands</em><br>
+    <img src="./assets/screenshots/screenshot-03.png" alt="Help" width="500"/>
+</p>
 
 ---
 
@@ -59,17 +77,24 @@ binconv/
 ├── include/
 │   └── binconv/
 │       ├── application.h
+│       ├── banner.h
+│       ├── colors.h
 │       ├── convert.h
+│       ├── help.h
 │       ├── input.h
 │       ├── menu.h
-│       └── signal.h
+│       ├── signal.h
+│       └── terminal.h
 ├── src/
 │   ├── application.c
+│   ├── banner.c
 │   ├── convert.c
+│   ├── help.c
 │   ├── input.c
 │   ├── main.c
 │   ├── menu.c
-│   └── signal.c
+│   ├── signal.c
+│   └── terminal.c
 ├── .gitignore
 ├── CMakeLists.txt
 ├── LICENSE
