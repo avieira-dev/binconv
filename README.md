@@ -39,11 +39,11 @@
 
 <p align="center">
     <em>Interactive menu option selection</em><br>
-    <img src="./assets/screenshots/screenshot-01.png" alt="Interactive menu option selection" width="500"/><br><br>
+    <img src="./assets/screenshots/screenshot-001.png" alt="Interactive menu option selection" width="500"/><br><br>
     <em>Decimal to binary conversion</em><br>
-    <img src="./assets/screenshots/screenshot-02.png" alt="Decimal to binary conversion" width="500"/><br><br>
+    <img src="./assets/screenshots/screenshot-002.png" alt="Decimal to binary conversion" width="500"/><br><br>
     <em>Help and available commands</em><br>
-    <img src="./assets/screenshots/screenshot-03.png" alt="Help" width="500"/>
+    <img src="./assets/screenshots/screenshot-003.png" alt="Help" width="500"/>
 </p>
 
 ---
