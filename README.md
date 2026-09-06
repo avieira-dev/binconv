@@ -2,7 +2,7 @@
     <h1>binconv</h1>
     <p>A lightweight command-line tool for number system conversions.</p>
     <p>
-        <img src="https://img.shields.io/badge/version-v2.0.0-4c1?style=flat-square"/>
+        <img src="https://img.shields.io/badge/version-v1.0.0-4c1?style=flat-square"/>
         <img src="https://img.shields.io/badge/status-stable-2ea44f?style=flat-square"/>
         <img src="https://img.shields.io/badge/platform-Linux-FCC624?style=flat-square&logo=linux&logoColor=black"/>
         <img src="https://img.shields.io/badge/maintenance-active-1f6feb?style=flat-square"/>
@@ -19,7 +19,7 @@
 **binconv** is a lightweight CLI utility designed to convert numbers between different numeral systems, currently supporting decimal and binary conversions.
 
 > [!IMPORTANT]  
-> **binconv v2.0.0** is now stable.
+> **binconv v1.0.0** is now stable.
 
 ---
 
